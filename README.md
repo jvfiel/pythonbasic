@@ -8,3 +8,4 @@ virtualenv pythonlegends/
 cd to pythonlegends/bin
 source activate
 pip install facebook-sdk
+pip install sqlalchemy
