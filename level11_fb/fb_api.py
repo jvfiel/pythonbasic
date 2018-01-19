@@ -1,8 +1,13 @@
-import facebook
+import facebook, os
+import ConfigParser
+
+Config = ConfigParser.ConfigParser()
+Config.read("{0}/fb.ini".format(os.path.dirname(os.path.abspath(__file__))))
+#url = Config.get('fb', 'url', 0)
 
 def renew_fb_token(graph):
-    app_id = ""
-    app_secret = ""
+    app_id = Config.get('fb', 'app_id', 0)
+    app_secret = Config.get('fb', 'app_secret', 0)
 
     # Extend the expiration time of a valid OAuth access token.
     extended_token = graph.extend_access_token(app_id, app_secret)
@@ -23,11 +28,11 @@ def post_feed(msg, img_list):
 
     # page_id = frappe.db.get_value("Mobile Settings", None, "fb_page_id")
     # page_access_token = frappe.db.get_value("Mobile Settings", None, "page_access_token")
-    page_id = ""
-    page_access_token = ""
+    page_id = Config.get('fb', 'page_id', 0)
+    page_access_token = Config.get('fb', 'page_access_token', 0)
     print 'has page access token', page_access_token
     api = facebook.GraphAPI(page_access_token)
-    print "expired old", page_access_token
+    #print "expired old", page_access_token
     # page_access_token = renew_fb_token(page_access_token)
     page_access_token = renew_fb_token(api)
     renewed_token = page_access_token['access_token']
