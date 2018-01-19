@@ -1,6 +1,6 @@
 ## 1. On the new page, go to About tab, and note the Facebook Page ID.
 ## 2. Go to Facebook Apps dashboard (https://developers.facebook.com/apps)
--> Click Add a New App 
+### -> Click Add a New App
 -> Choose platform WWW 
 -> Choose a new name for your app 
 -> Click Create New Facebook App ID 
